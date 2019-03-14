@@ -1,4 +1,4 @@
-# xml -> json
+# xml → json
 Converts PASCAL VOC annotations to the \_annotations.json format supported by the Cloud Annotations tool.
 
 ## Instructions
