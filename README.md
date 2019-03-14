@@ -1,5 +1,5 @@
-# xml 2 json
-Converts labels annotations for object detection models
+# xml -> json
+Converts PASCAL VOC annotations to the \_annotations.json format supported by the Cloud Annotations tool.
 
 ## Instructions
 Install the Cloud Object Storage SDK:
