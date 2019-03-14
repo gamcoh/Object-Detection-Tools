@@ -12,7 +12,7 @@ Convert xml annotations to json:
 python convert_xml2json.py
 ```
 
-Insert your `credentials` into `upload2bucket.py`:
+Add your `credentials` to `upload2bucket.py`:
 ```python
 credentials = {
   'bucket': 'YOUR_BUCKET_NAME',
