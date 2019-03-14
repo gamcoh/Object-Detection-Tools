@@ -6,10 +6,13 @@ from botocore.client import Config
 credentials = {
   'bucket': 'YOUR_BUCKET_NAME',
   'iam_url': 'https://iam.ng.bluemix.net/oidc/token',
-  'api_key': 'YOUR_API_KEY',
   'resource_instance_id': 'YOUR_INSTANCE_ID',
-  'url': 'YOUR_REGION_ENDPOINT'
+  'url': 'YOUR_REGION_ENDPOINT',
+  'api_key': 'YOUR_API_KEY'
 }
+
+image_directory = 'images'
+annotations = '_annotations.json'
 
 def main():
   bucket = ibm_boto3.resource('s3',
@@ -19,13 +22,14 @@ def main():
     config=Config(signature_version='oauth'),
     endpoint_url=credentials['url']
   ).Bucket(credentials['bucket'])
-  bucket.upload_file('_annotations.json', '_annotations.json')
+  print('uploading {}...'.format(annotations))
+  bucket.upload_file(annotations, annotations)
   
-  directory = 'images'
-  for filename in os.listdir(directory):
+  for filename in os.listdir(image_directory):
     small = filename.lower()
     if small.endswith('.jpeg') or small.endswith('.jpg') or small.endswith('.png'):
-      bucket.upload_file(os.path.join(directory, filename), filename)
+      print('uploading {}...'.format(filename))
+      bucket.upload_file(os.path.join(image_directory, filename), filename)
       continue
     else:
       continue
