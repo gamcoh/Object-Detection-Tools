@@ -1,4 +1,4 @@
-# Xml2Json
+# xml 2 json
 Converts labels annotations for object detection models
 
 ## Instructions
