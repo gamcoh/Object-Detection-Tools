@@ -1,4 +1,3 @@
-
 from lxml import etree
 from glob import iglob
 import os
@@ -9,13 +8,14 @@ XMLS_DIR_PATTERN = os.path.join(
 	os.path.dirname(__file__),
 	'{}/*.xml'.format(XMLS_DIR)
 )
-JSON_FILE = 'annotations/annotations.json'
+TEMPLATE = 'annotations/template.json'
+OUTPUT = '_annotations.json'
 
 def main():
-	with open(JSON_FILE) as file:
+	with open(TEMPLATE) as file:
 		json_content = json.load(file)
 
-	labels_names = []
+	labels_names = set()
 	
 	for xml_file in iglob(XMLS_DIR_PATTERN):
 		with open(xml_file) as file:
@@ -24,6 +24,10 @@ def main():
 			annotations = etree.fromstring(file.read())
 			image_filename = annotations.find('filename').text
 			boxes = annotations.iterfind('object')
+
+			size = annotations.find('size')
+			image_width = size.find('width').text
+			image_height = size.find('height').text
 
 			labels = []
 
@@ -35,22 +39,21 @@ def main():
 				xmax = bndbox.find('xmax').text
 				ymax = bndbox.find('ymax').text
 
-				if label_name not in labels_names:
-					labels_names.append(label_name)
+				labels_names.add(label_name)
 
 				labels.append({
-					'x': xmin,
-					'x2': xmax,
-					'y': ymin,
-					'y2': ymax,
+					'x': float(xmin) / float(image_width),
+					'x2': float(xmax) / float(image_width),
+					'y': float(ymin) / float(image_height),
+					'y2': float(ymax) / float(image_height),
 					'label': label_name
 				})
 			
 			json_content['annotations'][image_filename] = labels
 	
-	json_content['labels'] = labels_names
+	json_content['labels'] = list(labels_names)
 
-	with open(JSON_FILE, 'w') as file:
+	with open(OUTPUT, 'w') as file:
 		json.dump(json_content, file, indent=2)
 
 if __name__ == "__main__":
