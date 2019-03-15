@@ -4,7 +4,7 @@ Converts PASCAL VOC annotations to the \_annotations.json format supported by th
 ## Instructions
 Install the Cloud Object Storage SDK:
 ```
-pip install botocore==1.12.26 ibm-cos-sdk==2.3.2
+pip install botocore==1.12.26 ibm-cos-sdk==2.3.2 ibm-cos-sdk-core==2.3.2 ibm-cos-sdk-s3transfer==2.3.2
 ```
 
 Convert xml annotations to json:
