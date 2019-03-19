@@ -11,7 +11,7 @@ Convert xml annotations to json:
 python convert_xml2json.py
 ```
 
-### xml → json (Cloud Annotations Tool)
+### xml → json (COCO json annotation format)
 Convert xml annotations to coco json annotation format
 ```
 python pascal_voc_xml2coco_json.py
