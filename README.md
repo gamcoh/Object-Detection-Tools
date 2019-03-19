@@ -38,3 +38,7 @@ Upload the images and the annotations:
 ```
 python upload2bucket.py
 ```
+
+## Acknowledgments
+- Thanks to [@bourdakos1](https://github.com/bourdakos1) for the great help
+- Thanks to [@CivilNet](https://github.com/CivilNet) for the xml to coco script
