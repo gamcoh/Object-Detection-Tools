@@ -1,5 +1,8 @@
 # xml → json
-Converts PASCAL VOC annotations to the \_annotations.json format supported by the Cloud Annotations tool.
+Tools for object detection annotations:
+- Converts PASCAL VOC annotations to the \_annotations.json format supported by the Cloud Annotations tool.
+- Upload images and annotations to Cloud Object Storage Bucket.
+- Converts PASCAL VOC annotations to the COCO json annotation format.
 
 ## Instructions
 Install the Cloud Object Storage SDK:
@@ -10,6 +13,11 @@ pip install botocore==1.12.26 ibm-cos-sdk==2.3.2 ibm-cos-sdk-core==2.3.2 ibm-cos
 Convert xml annotations to json:
 ```
 python convert_xml2json.py
+```
+
+Convert xml annotations to coco json annotation format
+```
+python pascal_voc_xml2coco_json.py
 ```
 
 Add your `credentials` to `upload2bucket.py`:
