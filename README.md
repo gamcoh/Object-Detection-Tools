@@ -5,6 +5,12 @@ Tools for object detection annotations in machine learning:
 - Converts PASCAL VOC annotations to the COCO json annotation format.
 
 ## Instructions
+### Remove empty annotation
+Remove empty xml annotation file. If a file does not have any `object` tag:
+```
+python remove_empty_annotation.py
+```
+
 ### Remove some annotation
 This script removes an annotation from all of your xml files.
 If you want to remove all xml objects from your annotations files that have the label 'car':
