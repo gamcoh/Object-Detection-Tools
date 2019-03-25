@@ -3,6 +3,8 @@ Tools for object detection annotations in machine learning:
 - Converts PASCAL VOC annotations to the \_annotations.json format supported by the Cloud Annotations tool.
 - Upload images and annotations to Cloud Object Storage Bucket.
 - Converts PASCAL VOC annotations to the COCO json annotation format.
+- Remove empty annotation files
+- Remove some annotations in all the files
 
 ## Instructions
 ### Remove empty annotation
